@@ -70,22 +70,28 @@ class TestCase02(unittest.TestCase):
         time.sleep(1)
         #找到个人用户管理菜单
         driver.find_element(By.XPATH,"""//*[@id="app"]/div[2]/ul/li[2]/ul/li/ul/li[4]""").click()
-        time.sleep(3)
+        time.sleep(5)
         #找到认证状态筛选框
         driver.find_element(By.XPATH,"""//*[@id="app"]/div[3]/div/div[2]/div[1]/div[2]/div/div/input""").click()
         time.sleep(1)
         #搜索出状态未未认证的数据
-        driver.find_element(By.XPATH,"""/html/body/div[7]/div[1]/div[1]/ul/li[1]/span""").send_keys("未认证")
+        driver.find_element(By.XPATH,"""/html/body/div[2]/div[1]/div[1]/ul/li[1]""").click()
+        time.sleep(1)
         #获取未认证的列表数据
-        page_data=driver.find_elements(By.XPATH,"//span[text()='更多']")
+        page_data=driver.find_elements(By.XPATH,"//*[@class='mt-Operator__chevron-down mt-Operator__dropdown-chevron-down el-dropdown-selfdefine']")
+
         if page_data:
+            print(page_data[0])
             #找到第一行数据的更多按钮
+            time.sleep(1)
             page_data[0].click()
             driver.find_element(By.XPATH,"""//*[@id="dropdown-menu-2065"]/li[3]/span/span""").click()
             time.sleep(3)
             ale=driver.switch_to.alert
             #弹窗点击确定
             ale.accept()
+
+
 
 
 
